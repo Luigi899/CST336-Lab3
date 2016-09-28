@@ -7,6 +7,10 @@
             <title>Lab 3: Silver Jack </title>
         <meta charset="utf-8"/>
          <link rel="stylesheet" href="../Lab3/Css/Styles.css" type="text/css" />
+<<<<<<< HEAD
+=======
+       
+>>>>>>> origin/master
     </head>
     <body>
         <div id="wrapper">
@@ -67,7 +71,7 @@
      </div>
      <hr>
         <div id="footer">
-            <footer>&copy; D'Antonio, 2016. <br/> Disclaimer: The information on this page might not be accurate. It's used for academic purposes. <br/>
+            <footer>&copy; D'Antonio, Cousineau, Ruvalcaba 2016. <br/> Disclaimer: The information on this page might not be accurate. It's used for academic purposes. <br/>
         <img src="../../Img/csumb-logo.png" alt="CSUMB Logo" /></footer>
         </div>
     </body>
