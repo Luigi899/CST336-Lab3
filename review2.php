@@ -104,12 +104,14 @@
                         $array_one = randomArray();
                         $array_two = randomArray();
                         $array_three = randomArray();
+                        $array_four = randomArray();
                         
                         $sum1 = getSum($array_one);
                         $sum2 = getSum($array_two);
                         $sum3 = getSum($array_three);
+                        $sum4 = getSum($array_four);
                         
-                        $total = getSum($array_one+$array_two+$array_three);
+                        $total = getSum($array_one+$array_two+$array_three+$array_four);
                        
        
         
@@ -136,9 +138,17 @@
                         <td><img src='Img/cards/".randomSuit()."/$array_three[3].png'></td>
                         <td><img src='Img/cards/".randomSuit()."/$array_three[4].png'>
                         <td><span class=fontChange>  $sum3</span></td></td>";
+                        
+                        echo "<tr><td><img src='Img/Jack.jpg'/></td><td><img src='Img/cards/diamonds/$array_one[0].png'></td>
+                     
+                        <td><img src='Img/cards/".randomSuit()."/$array_four[1].png'></td>
+                        <td><img src='Img/cards/".randomSuit()."/$array_four[2].png'></td> 
+                        <td><img src='Img/cards/".randomSuit()."/$array_four[3].png'></td>
+                        <td><img src='Img/cards/".randomSuit()."/$array_four[4].png'>
+                        <td><span class=fontChange>  $sum4</span></td></td>";
                        
                         
-                        echo "<tr><td><h3>". printWinner(findGreater($sum1, $sum2, $sum3)) .  "</h3><tr><td>";
+                        echo "<tr><td><h3>". printWinner(findGreater($sum1, $sum2, $sum3, $sum4)) .  "</h3><tr><td>";
                         
                     ?>
                </table>
