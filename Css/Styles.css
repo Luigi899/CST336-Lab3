@@ -1,0 +1,12 @@
+root {
+    display: block;
+}
+#wrapper {
+    margin: auto;
+    padding:20px;
+    background: #FFFFFF; 
+    width:1000px;
+    border-radius: 15px;
+    margin-bottom:25px;
+}
+ 
