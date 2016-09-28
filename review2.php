@@ -6,11 +6,7 @@
     <head>
             <title>Lab 3: Silver Jack </title>
         <meta charset="utf-8"/>
-         <link rel="stylesheet" href="../Lab3/Css/Styles.css" type="text/css" />
-<<<<<<< HEAD
-=======
-       
->>>>>>> origin/master
+         <link rel="stylesheet" href="../CST336-Lab3/Css/Styles.css" type="text/css" />
     </head>
     <body>
         <div id="wrapper">
@@ -70,7 +66,9 @@
                         <td><span class=fontChange>  $sum4</span></td></td>";
                        
                         
+
                         echo "<tr><td><h3>". printWinner(findGreater($sum1, $sum2, $sum3, $sum4)) .  "</h3><tr><td>";
+
                         
                     ?>
                </table>
