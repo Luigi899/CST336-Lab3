@@ -19,61 +19,68 @@
                    <th colspan = "5" style="color: #ff5454">Score</th></tr>
                     
                     <?php
+                        $counter = 0;
                         $array_one = randomArray();
                         $array_two = randomArray();
                         $array_three = randomArray();
                         $array_four = randomArray();
+                        $pic_array=array('Alex','Jack','Luigi','House');
+                        shuffle($pic_array);
                         
                         $sum1 = getSum($array_one);
                         $sum2 = getSum($array_two);
                         $sum3 = getSum($array_three);
                         $sum4 = getSum($array_four);
-                        
-                        $total = getSum($array_one+$array_two+$array_three+$array_four);
-                       
-       
-        
-                
-                        echo "<tr><td><img src='Img/Jack.jpg'/></td><td><img src='Img/cards/diamonds/$array_one[0].png'></td>
-                     
-                        <td><img src='Img/cards/".randomSuit()."/$array_one[1].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_one[2].png'></td> 
-                        <td><img src='Img/cards/".randomSuit()."/$array_one[3].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_one[4].png'>
-                        <td><span class=fontChange>  $sum1</span></td></td>";
-                        echo "<tr><td><img src='Img/Alex.jpg'/></td><td><img src='Img/cards/diamonds/$array_one[0].png'></td>
-                  
-                        <td><img src='Img/cards/".randomSuit()."/$array_two[1].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_two[2].png'></td> 
-                        <td><img src='Img/cards/".randomSuit()."/$array_two[3].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_two[4].png'>
-                        <td><span class=fontChange>  $sum2</span></td></td>";
-                        
-                        echo "<tr><td><img src='Img/Luigi.jpg'/></td><td><img src='Img/cards/diamonds/$array_one[0].png'></td>
-                    
-                        <td><img src='Img/cards/".randomSuit()."/$array_three[1].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_three[2].png'></td> 
-                        <td><img src='Img/cards/".randomSuit()."/$array_three[3].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_three[4].png'>
-                        <td><span class=fontChange>  $sum3</span></td></td>";
-                        
-                        echo "<tr><td><img src='Img/Jack.jpg'/></td><td><img src='Img/cards/diamonds/$array_one[0].png'></td>
-                     
-                        <td><img src='Img/cards/".randomSuit()."/$array_four[1].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_four[2].png'></td> 
-                        <td><img src='Img/cards/".randomSuit()."/$array_four[3].png'></td>
-                        <td><img src='Img/cards/".randomSuit()."/$array_four[4].png'>
-                        <td><span class=fontChange>  $sum4</span></td></td>";
-                       
-                        
+                        $hearts = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
+                        $clubs = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
+                        $spades = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
+                        $diamonds = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
+                        $h = 0;
+                        $c =0;
+                        $s =0;
+                        $d =0;
+                        shuffle($hearts);
+                        shuffle($clubs);
+                        shuffle($spades);
+                        shuffle($diamonds);
+                        for($k = 0; $k < 4; $k++)
+                        {
+                             echo "<img src='Img/".$pic_array[$k].".jpg'/> $pic_array[$k]";
+                             $sum =0;
+                             while ($sum < 36) {
+                                $temp = randomSuit();
+                                if ($temp == "hearts") {
+                                    echo "<img src='Img/cards/hearts/".$hearts[$h].".png'/>";
+                                    $sum += $hearts[$h];
+                                    $h++;
+                                 
+                                }
+                                elseif ($temp == "spades") {
+                                    echo "<img src='Img/cards/spades/".$spades[$s].".png'/>";
+                                    $sum += $spades[$s];
+                                    $s++;
+                                }
+                                elseif ($temp == "clubs") {
+                                    echo "<img src='Img/cards/clubs/".$clubs[$c].".png'/>";
+                                    $sum += $clubs[$c];
+                                    $c++;
+                                }
+                                else {
+                                    echo "<img src='Img/cards/diamonds/".$diamonds[$d].".png'/>";
+                                    $sum += $diamonds[$d];
+                                    $d++;
+                                 }
+                             }
+                             
+                        }
 
-                        echo "<tr><td><h3>". printWinner(findGreater($sum1, $sum2, $sum3, $sum4)) .  "</h3><tr><td>";
+                        echo "<h3>". printWinner(findGreater($sum1, $sum2, $sum3, $sum4)) .  "</h3>";
 
                         
                     ?>
                </table>
                 <div id='playA'>
-                     <a href='../Lab3/review2.php'>Play Again</a>
+                     <a href='../CST336-Lab3/review2.php'>Play Again</a>
                 </div>
          </div> 
      </div>

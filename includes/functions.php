@@ -87,5 +87,8 @@
         
         return $winner;
     }
+    function imagedisplay($index) {
+        
+    }
     
 ?>
