@@ -38,57 +38,54 @@
         
         return $sum;
     }
-    function findGreater($sum1, $sum2, $sum3, $sum4){
+    function printwinner($sum1, $sum2, $sum3, $sum4,$players){
         $results_array = array();
+        $check= array(0,0,0,0);
+        $one = 0;
+        $two = 0;
+        $three = 0;
+        $four =0;
         array_push($results_array, abs(42 - $sum1), abs(42 - $sum2), abs(42 - $sum3), abs(42 - $sum4));
-        $minValue = min($results_array);
-        $minIndex = 0;
+        $winners = 0;
+        $winner_sum =0;
         for($i = 0; $i < 4; $i++){
-            if($results_array[$i] == $minValue)
+            if($winner_sum < $results_array[$i] && $results_array < 43)
                 $minIndex = $i;
+                $check[i] = 1;
+                $winners++;
         }
-        
-        if(duplicateCheck($sum1, $sum2, $sum3, $sum4) == true){
-            $minIndex = -1;
-        }
-        
-        
-        return $minIndex;
-    }
-    function duplicateCheck($sum1, $sum2, $sum3, $sum4){
-        $results_array = array();
-        array_push($results_array, $sum1, $sum2, $sum3, $sum4);
-        for($i = 0; $i < 4; $i++){
-            for($j = $i + 1; $j < 5; $j++)
-                if($results_array[$i] == $results_array[$j])
-                {
-                return true;
+        for ($i = 0; $i <4;$i++)
+        {
+            if ($check[$i]==1)
+            {
+                if ($one == 0)
+                    $one = $i;
+                elseif ($two ==0) {
+                    $two = $i;
+                }
+                elseif ($three ==0) {
+                    $three = $i;
+                }
+                else {
+                    $four == $i;
+                }
             }
         }
-        
-        return false;
-    }
-    function printWinner($minIndex){
-        $winner = "";
-        switch($minIndex)
-            {
-            case -1: $winner = "Tie!";
-            break;
-            case 0: $winner = "Jack Wins! $total";
-            break;
-            case 1: $winner = "Alex Wins! $total";
-            break;
-            case 2: $winner = "Luigi Wins! $total";
-            break;
-            case 3: $winner = "Player 4 Wins! $total";
-            break;
-           
+        if ($winners == 2)
+        {
+            echo $players[$one]. "and".$players[$two]; 
         }
-        
-        return $winner;
+        elseif ($winners == 3) {
+            echo $players[$one]. ", ".$players[$two]." and ".$players[$three];
+        }
+        elseif ($winners ==4) {
+            echo $players[$one]. ", ".$players[$two].", ".$players[$three] . " and " . $players[$four];
+        }
+        else
+        {
+            echo $players[$one];
+        }
     }
-    function imagedisplay($index) {
-        
-    }
+ 
     
 ?>
