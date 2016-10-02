@@ -1,4 +1,3 @@
-
 <?php
 $suits = array("clubs", "diamonds", "hearts", "spades");
 $deck = array();
@@ -135,10 +134,7 @@ function getWinner() {
             $winner_name = "House";
              $counter++;
         }
-         elseif($first_letter == "t"){
-            $winner_name = "Tied";
-             $counter++;
-        }
+       
 
 
         if($counter > 1)
@@ -224,4 +220,4 @@ function displayHand()
         </div>
     </body>
 
-</html>                  
+</html>
