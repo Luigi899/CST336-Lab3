@@ -6,29 +6,29 @@ for($i = 1; $i < 52; $i++)
     $deck[] = $i;
 }
 
-$student_card_value = array();
-$student_name = array();
-$student_pic = array();
-$student_hand = array();
-$repeats = array();
-array_push($student_name, "Luigi");
-array_push($student_name, "Alex");
-array_push($student_name, "Jack");
-array_push($student_name, "House");
-array_push($student_pic, "luigi");
-array_push($student_pic, "alex");
-array_push($student_pic, "jack");
-array_push($student_pic, "house");
+$studcardval= array();
+$studname = array();
+$studpic = array();
+$studhand = array();
+$rep = array();
+array_push($studname, "Luigi");
+array_push($studname, "Alex");
+array_push($studname, "Jack");
+array_push($studname, "House");
+array_push($studpic, "luigi");
+array_push($studpic, "alex");
+array_push($studpic, "jack");
+array_push($studpic, "house");
 
-function run() {
+function displresult() {
 
-    global $student_hand;
+    global $studhand;
     global $deck;
     global $suits;
-    array_push($student_hand, getHand());
-    array_push($student_hand, getHand());
-    array_push($student_hand, getHand());
-    array_push($student_hand, getHand());
+    array_push($studhand, getHand());
+    array_push($studhand, getHand());
+    array_push($studhand, getHand());
+    array_push($studhand, getHand());
     displayHand();
     getWinner();
 
@@ -36,12 +36,12 @@ function run() {
 function getHand(){
     global $deck;
     global $suits;
-    global $student_card_value;
-    global $repeats;
+    global $studcardval;
+    global $rep;
 
     $isFound = FALSE;
 
-    $user_options = array();
+    $usopt = array();
     $amount = 0;
 
     while($amount < 42){
@@ -49,22 +49,22 @@ function getHand(){
         $card_suit = $suits[floor($random_card/ 13)];
         $card_value = ($random_card % 13) + 1;
 
-        for($i=0; $i < count($repeats); $i++)
+        for($i=0; $i < count($rep); $i++)
         {
-            if($random_card === $repeats[$i])
+            if($random_card == $rep[$i])
             {
                 $isFound = TRUE;
                 break;
             }
         }
 
-        if($isFound === FALSE)
+        if($isFound == FALSE)
         {
             if($amount + $card_value <= 42){
             $amount = $amount + $card_value;
             unset($GLOBALS[$deck[$random_card]]);
 
-            array_push($user_options, $card_suit . "/" .$card_value);
+            array_push($usopt, $card_suit . "/" .$card_value);
         }
         else{
             break;
@@ -75,42 +75,41 @@ function getHand(){
 
     }
 
-    array_push($student_card_value, $amount); //this will add the sum for each student to the array which will work in parallel with another
-                                              //array that will keep track of the student's name and picture.
-    return $user_options;
+    array_push($studcardval, $amount);
+    return $usopt;
 
 }
 function getWinner() {
 
-    global $student_card_value;
-    global $student_name;
-    global $student_pic;
+    global $studcardval;
+    global $studname;
+    global $studpic;
 
     $winners = array();
-    $winner_value;
-    $winner_name;
-    $winner_pic;
+    $winval;
+    $winname;
+    $winpic;
 
-    $temp_winner = $student_card_value[0];
-    $temp_winner_pic = $student_pic[0];
-    $temp_winner_name = $student_name[0];
-    $totalSum = $student_card_value[0];
+    $temwin = $studcardval[0];
+    $temwinpic = $studpic[0];
+    $temp_winner_name = $studname[0];
+    $totalSum = $studcardval[0];
 
-    $max_value = max($student_card_value);
+    $max_value = max($studcardval);
     $name_position = 0;
     for($i = 0; $i < 4; $i++)
     {
-        $totalSum += $student_card_value[$i];
+        $totalSum += $studcardval[$i];
 
-        if( $max_value === $student_card_value[$i])
+        if( $max_value == $studcardval[$i])
         {
 
-            array_push($winners, $student_pic[$i]);
+            array_push($winners, $studpic[$i]);
         }
 
     }
-    $winner_value = $temp_winner;
-    $winner_pic = $temp_winner_pic;
+    $winval = $temwin;
+    $winpic = $temwinpic;
 
 
     $counter = 0;
@@ -118,75 +117,73 @@ function getWinner() {
     for($i = 0; $i < count($winners); $i++){
         $name = $winners[$i];
         $first_letter = substr($name, 0, 1);
-        if($first_letter === "l"){
-            $winner_name = "Luigi";
+        if($first_letter == "l"){
+            $winname = "Luigi";
              $counter++;
         }
-        elseif($first_letter === "a"){
-            $winner_name = "Alex";
+        elseif($first_letter == "a"){
+            $winname = "Alex";
              $counter++;
         }
         elseif($first_letter == "j"){
-            $winner_name = "Jack";
+            $winname = "Jack";
              $counter++;
         }
         elseif($first_letter == "h"){
-            $winner_name = "House";
+            $winname = "House";
              $counter++;
         }
-       
 
 
         if($counter > 1)
         {
-            echo " & ";
+            echo " and ";
         }
-        echo "$winner_name";
+        echo "$winname";
 
     }
     if($counter > 1){
-            echo " are the winners! They received $totalSum points";
+            echo " are the winners!  <br> They received $totalSum points";
         }
         else{
-            echo " is the winner! They received $totalSum points";
+            echo " is the winner!  <br> They received $totalSum points";
         }
 }
 function displayHand()
 {
-    global $student_pic;
-    global $student_hand;
-    global $student_card_value;
+    global $studpic;
+    global $studhand;
+    global $studcardval;
 
     $length;
 
-    shuffle($student_pic);
+    shuffle($studpic);
 
-    $extPNG = ".png";
-    $extJPG = "jpg";
 
     echo "<table>";
-    for($i=0; $i<count($student_hand); $i++)
+    for($i=0; $i<count($studhand); $i++)
     {
         echo'<tr>';
         echo'<td>';
-        echo"<img src= Img/" . $student_pic[$i] . ".jpg>";
+        echo"<img src=Img/" . $studpic[$i] . ".jpg>";
         echo'</td>';
 
-        $length = $student_hand[$i];
+        $length = $studhand[$i];
 
         for($j=0; $j<count($length); $j++)
         {
             echo'<td>';
-            echo "<img src= Img/cards/" .$student_hand[$i][$j] .".png>";
+            echo "<img src= Img/cards/" .$studhand[$i][$j] .".png>";
             echo'</td>';
         }
         echo'<td>';
-        echo $student_card_value[$i];
+        echo $studcardval[$i];
         echo '</td>';
         echo '</tr>';
         echo "<br/>";
     }
     echo"</table>";
+
 }
 ?>
 <!DOCTYPE HTML>
@@ -199,22 +196,23 @@ function displayHand()
     </head>
     <body>
         <main>
-        <div id="header1">
+        <div id="wrapper">
             <h1>Silverjack</h1>
         </div>
               <center>
-                      <?=run()?>
+                      <?=displresult()?>
               </center>
         <br/>
         </main>
         <form>
-           <center> <button type="submit" onclick="<?php run() ?>"name="run" id="button">PlayAgain</button></center>
+           <center> <button type="submit" onclick="<?php displresult() ?>"name="displresult" id="button">PlayAgain</button></center>
         </form>
         <br />
         <br />
           <hr>
+          <br>
         <div id="footer">
-             <a class='link_button' href='https://cst336-ginos89.c9users.io/homepage.html'>Homepage</a><br /><br />
+             <a class='link_button' href='https://cst336-ginos89.c9users.io/homepage.html'>Homepage</a><br /><br /><br />
             <footer>&copy; D'Antonio, Cousineau, Ruvalcaba 2016. <br/> Disclaimer: The information on this page might not be accurate. It's used for academic purposes. <br/>
         <img src="../../Img/csumb-logo.png" alt="CSUMB Logo" /></footer>
         </div>

@@ -100,3 +100,10 @@ hr {
     text-align: center;
     width: 80%;
 }
+#wrapper {
+    margin: auto;
+    background: #FFFFFF;
+    width: 1000px;
+    text-align:center;
+    resize: both;
+}
